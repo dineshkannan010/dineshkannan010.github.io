@@ -1,0 +1,134 @@
+/* For the profile pic*/
+.profile-pic {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.name {
+    display: flex;
+}
+
+.name h1 {
+    margin: 0 10px; /* Optional: Add some space between the names */
+}
+
+/* For the contact section*/
+
+.contact {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 0;
+}
+.contact li {
+    margin: 0 15px;
+}
+.contact h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+.contact span, .contact a {
+    font-size: 1em;
+    color: #2319aa;
+}
+
+/*Job heading*/
+.job-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job-info h2 {
+    margin: 0;
+}
+
+.job-info p {
+    margin: 0;
+}
+
+/*Introduction*/
+.text-slider {
+    font-size: 36px; /* Adjust this value to increase/decrease font size */
+    font-weight: bold;
+  }
+
+/*Skills*/
+
+.skills_section {
+
+    padding: 2em 20em 3em 3em ;
+    width: 100%;
+    border-top: solid 1px rgba(255, 255, 255, 0.15);
+    position: relative;
+}
+.tools_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 80px;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 70px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 75%; /* Position the tooltip below the icon */
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: small;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+.info-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #a81717;
+    margin: 40px auto; /* Center the box */
+}
+.name {
+    font-weight: bold;
+    margin-right: 40px; /* Space between name and description */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: flex-start; /* Align the headings to the start (left) */
+    flex-basis: 30%;
+}
+
+.name h3, .name h5 {
+    margin: 0; /* Remove any default margins */
+    padding: 0; /* Remove any default padding */
+}
+
+.description {
+    flex-basis: 70%; /* Adjust the description size accordingly */
+    text-align: justify; /* Ensures text is justified */
+}
