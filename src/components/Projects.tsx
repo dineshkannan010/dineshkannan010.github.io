@@ -18,38 +18,37 @@ const projects: Project[] = [
     id: "ellipsis",
     title: "Ellipsis — Podcast Generation Platform",
     description: "A fully automated, AI-driven podcast generation agent capable of producing human-like, high-quality podcasts.",
-    image: "https://images.pexels.com/photos/3783471/pexels-photo-3783471.jpeg",
+    image: "images/Ellipse.jpg",
     technologies: ["Python", "Flask", "React", "Redis", "Orpheus TTS", "Perplexity API"],
-    github: "https://github.com/username/ellipsis",
+    github: "https://github.com/dineshkannan010/Ellipsis.git",
     details: "Developed a fully automated podcast generation platform using AI. Features include intelligent multi-speaker dialogue generation, automated content research, and high-quality text-to-speech synthesis."
   },
   {
     id: "burnout-extreme",
     title: "BurnoutExtreme",
     description: "An integrated fitness platform with AI-powered workout plans and diet tracking.",
-    image: "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg",
+    image: "images/BurnoutExtreme.jpg",
     technologies: ["Flask", "React.js", "MongoDB", "Google Maps API", "Chart.js"],
-    github: "https://github.com/username/burnout-extreme",
-    liveDemo: "https://burnout-extreme.com",
+    github: "https://github.com/SoftwareEngineeringNCSU101/BurnoutExtreme.git",
     details: "Built an integrated fitness platform with modular components for diet tracking, real-time step monitoring, and AI-generated workout plans. Implemented an AI chatbot for personalized recommendations and integrated Google Maps API for local fitness events."
   },
   {
     id: "thermal-modeling",
     title: "Sample Efficient Rapid Thermal Modeling of 3D IC",
     description: "A conditional diffusion model for predicting high-resolution thermal maps from power maps.",
-    image: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg",
-    technologies: ["PyTorch", "Diffusion Models", "Python", "Neural Networks"],
+    image: "images/UNetPic1.jpg",
+    technologies: ["Python", "Flask", "React", "MongoDB", "OpenAI API", "RAG Pipeline", "Langchain"],
     github: "https://github.com/username/thermal-modeling",
     details: "Developed a conditional diffusion model achieving 56% performance improvement over traditional GAN models. Optimized for intricate thermal distributions and diverse 3D IC stack layouts."
   },
   {
     id: "mlops-pipeline",
-    title: "End-to-End MLOps Pipeline for Generative AI",
-    description: "A scalable MLOps pipeline supporting GPT-4 forks with automated testing and deployment.",
-    image: "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg",
+    title: "FirstGuess TA Chatbot",
+    description: "An AI-powered Teaching Assistant chatbot, redefining teaching support and streamlining your academic journey with unparalleled efficiency and effectiveness..",
+    image: "images/TAChatbot.jpg",
     technologies: ["PyTorch", "AWS SageMaker", "Docker", "Apache Airflow", "GitHub Actions"],
-    github: "https://github.com/username/mlops-pipeline",
-    details: "Architected a comprehensive MLOps pipeline using PyTorch and AWS SageMaker. Implemented continuous red teaming tests and automated orchestration via Apache Airflow."
+    github: "https://github.com/dineshkannan010/FirstGuess_TAChatbot.git",
+    details: "Implemented a human-in-the-loop learning pipeline integrated with course materials to build a responsive full-stack application with React, Flask, and MongoDB. Improved chatbot accuracy by 30% through optimized query caching and embedded academic content."
   }
 ];
 

@@ -2,47 +2,81 @@ import React, { useState, useEffect, useRef } from "react";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { Link } from "react-scroll";
 import { motion } from "framer-motion";
-import NET from "vanta/dist/vanta.net.min";   // Vanta.NET effect
-import * as THREE from "three";              // Vanta’s peer dependency
+
+// Import Vanta effects + Three.js
+import NET from "vanta/dist/vanta.net.min";
+import CLOUDS from "vanta/dist/vanta.clouds.min";
+import * as THREE from "three";
+
+// ① Import your profile picture
+import ProfilePic from "../../images/Profile_pic.jpg";
+
 
 const Hero: React.FC = () => {
   // ──────────────────────────────────────────────────────────────────────
-  // 1️⃣ Create a ref and state to hold the Vanta effect instance
+  // Refs & state for Vanta instances
   // ──────────────────────────────────────────────────────────────────────
-  const vantaRef = useRef<HTMLDivElement | null>(null);
-  const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const netRef = useRef<HTMLDivElement | null>(null);
+  const cloudsRef = useRef<HTMLDivElement | null>(null);
+  const [netEffect, setNetEffect] = useState<any>(null);
+  const [cloudsEffect, setCloudsEffect] = useState<any>(null);
 
   // ──────────────────────────────────────────────────────────────────────
-  // 2️⃣ Initialize Vanta.NET when component mounts; destroy on unmount
+  // Initialize Vanta.NET (AI/ML “neural‐net” style)
   // ──────────────────────────────────────────────────────────────────────
   useEffect(() => {
-    if (!vantaEffect && vantaRef.current) {
-      setVantaEffect(
+    if (!netEffect && netRef.current) {
+      setNetEffect(
         NET({
-          el: vantaRef.current,
-          THREE,                                 // Pass the Three.js import
-          color: 0x22d3ee,                       // Node color (cyan-400)
-          backgroundColor: 0x000000,            // Dark background
-          backgroundAlpha: 1.0,
-          points: 12.0,                          // Density of nodes
-          maxDistance: 20.0,                     // Link length
-          spacing: 18.0,                         // Node spacing
-          showDots: true,                        // Show the nodes themselves
-          mouseControls: true,                   // React to mouse hover
-          touchControls: true,                   // React on touch devices
+          el: netRef.current,
+          THREE,
+          color: 0x60a5fa,          // a lighter sky-blue for nodes
+          backgroundColor: 0x0f172a, // nearly black (indigo-900)
+          // lower opacity so you still see a hint of “clouds”?
+          points: 15.0,
+          maxDistance: 20.0,
+          spacing: 18.0,
+          showDots: true,
+          mouseControls: true,
+          touchControls: true,
           gyroControls: false,
-          scale: 1.0,
-          scaleMobile: 1.0,
         })
       );
     }
     return () => {
-      if (vantaEffect) {
-        vantaEffect.destroy();
-        setVantaEffect(null);
+      if (netEffect) {
+        netEffect.destroy();
+        setNetEffect(null);
       }
     };
-  }, [vantaEffect]);
+  }, [netEffect]);
+
+  // ──────────────────────────────────────────────────────────────────────
+  // Initialize Vanta.CLOUDS (Cloud‐Computing vibe)
+  // ──────────────────────────────────────────────────────────────────────
+  useEffect(() => {
+    if (!cloudsEffect && cloudsRef.current) {
+      setCloudsEffect(
+        CLOUDS({
+          el: cloudsRef.current,
+          THREE,
+          skyColor: 0x000000,        // keep the same black base
+          cloudColor: 0x1f2937,      // dark‐indigo/gray clouds
+          cloudShadowColor: 0x000000,
+          sunColor: 0xffffff,        // (unused since it’s dark)
+          sunPosition: { x: 1.0, y: 1.0, z: 0.25 },
+          speed: 1.0,                // moderate cloud drift
+          backgroundColor: 0x000000, // ensure truly black underneath
+        })
+      );
+    }
+    return () => {
+      if (cloudsEffect) {
+        cloudsEffect.destroy();
+        setCloudsEffect(null);
+      }
+    };
+  }, [cloudsEffect]);
 
   return (
     <section
@@ -50,22 +84,32 @@ const Hero: React.FC = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 bg-black"
     >
       {/* ────────────────────────────────────────────────────────────────── */}
-      {/* 1. Vanta.NET background container (absolutely positioned) */}
+      {/* 1. Vanta.NET canvas (AI/ML visualization) */}
       {/* ────────────────────────────────────────────────────────────────── */}
       <div
-        ref={vantaRef}
+        ref={netRef}
         className="absolute inset-0 z-0"
         style={{ backgroundColor: "#000000" }}
       ></div>
 
       {/* ────────────────────────────────────────────────────────────────── */}
-      {/* 2. Blurred “cloud” blobs (optional, for extra depth) */}
+      {/* 2. Vanta.CLOUDS canvas (Cloud‐Computing visualization, semi-opaque) */}
       {/* ────────────────────────────────────────────────────────────────── */}
-      <div className="absolute inset-0 z-0">
+      <div
+        ref={cloudsRef}
+        className="absolute inset-0 z-10 opacity-50"
+        style={{ backgroundColor: "transparent" }}
+      ></div>
+
+
+      {/* ────────────────────────────────────────────────────────────────── */}
+      {/* 3. Blurred color “code‐cloud” blobs (to hint Full-Stack + depth) */}
+      {/* ────────────────────────────────────────────────────────────────── */}
+      <div className="absolute inset-0 z-20">
         <div
           className="
             absolute top-20 right-0 w-96 h-96
-            bg-teal-400/20 dark:bg-cyan-800/20
+            bg-teal-500/20 dark:bg-cyan-800/20
             rounded-full mix-blend-overlay filter blur-3xl
             opacity-50 animate-float
           "
@@ -81,9 +125,30 @@ const Hero: React.FC = () => {
       </div>
 
       {/* ────────────────────────────────────────────────────────────────── */}
-      {/* 3. Main content (text, buttons, social icons) */}
+      {/* 4. Main content (Full-Stack text, buttons, social icons) */}
       {/* ────────────────────────────────────────────────────────────────── */}
-      <div className="container mx-auto px-6 relative z-10 text-center">
+      <div className="container mx-auto px-6 relative z-30 text-center">
+        {/* 4a. Profile picture */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-6"
+        >
+          <img
+            src={ProfilePic}
+            alt="Dinesh Kannan"
+            className="
+              w-32 h-32               /* 128×128 px */
+              md:w-40 md:h-40          /* 160×160 px on medium screens */
+              rounded-full             /* make it a circle */
+              border-4 border-teal-400 /* teal ring */
+              object-cover             /* cropped to center */
+              shadow-lg                /* subtle drop-shadow */
+              mx-auto                  /* center horizontally */
+            "
+          />
+        </motion.div>
         {/* Name */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -147,7 +212,7 @@ const Hero: React.FC = () => {
           </Link>
         </motion.div>
 
-        {/* Social Icons */}
+        {/* Social Icons (Full-Stack “contact” links) */}
         <motion.div
           className="flex space-x-6 justify-center"
           initial={{ opacity: 0, y: 20 }}
@@ -183,9 +248,9 @@ const Hero: React.FC = () => {
       </div>
 
       {/* ────────────────────────────────────────────────────────────────── */}
-      {/* 4. Scroll-down arrow */}
+      {/* 5. Scroll-down arrow */}
       {/* ────────────────────────────────────────────────────────────────── */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-gray-400 animate-bounce">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-gray-400 animate-bounce z-30">
         <Link
           to="about"
           spy={true}

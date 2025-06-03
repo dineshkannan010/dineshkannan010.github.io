@@ -43,7 +43,7 @@ const experiences: ExperienceItem[] = [
   },
   {
     id: 3,
-    title: "Consulting Analyst",
+    title: "Deloitte Consulting Analyst",
     company: "Deloitte",
     location: "Mumbai, India",
     date: "January 2023 - July 2023",
