@@ -9,7 +9,7 @@ import CLOUDS from "vanta/dist/vanta.clouds.min";
 import * as THREE from "three";
 
 // ① Import your profile picture
-import ProfilePic from "../../images/Profile_pic.jpg";
+import ProfilePic from "/images/Profile_pic.jpg";
 
 
 const Hero: React.FC = () => {

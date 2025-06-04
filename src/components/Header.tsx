@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = ({
               </Link>
             ))}
             <a
-              href="/resume.pdf"
+              href="assets/Resume/SDE_DineshKannan_Resume.pdf"
               className="ml-4 btn btn-outline flex items-center"
               download
             >
