@@ -48,12 +48,11 @@ const experiences: ExperienceItem[] = [
     location: "Mumbai, India",
     date: "January 2023 - July 2023",
     description: [
-      "Engineered JavaScript web API scripts for Dynamics CRM, improving data retrieval speeds by 40%",
-      "Automated workflows using Power BI and JavaScript, achieving 35% efficiency improvement",
-      "Contributed to Agile sprints, reducing feature delivery timelines by 27%",
-      "Implemented hybrid MySQL + MongoDB schema to support real-time analytics"
+      "Engineered JavaScript web APIs for Dynamics CRM and automated Power BI workflows, boosting data retrieval by 40% and efficiency by 35%.",
+      "Architected hybrid MySQL/MongoDB schema and led Agile sprints, cutting query latency and delivery time 27%.",
+      "Conducted EDA and built Python/SQL ML models (93.5% accuracy), cutting rejections 25%; deployed Power BI dashboards, reducing rejections by 13% and increasing profit by 5%."
     ],
-    technologies: ["JavaScript", "Dynamics CRM", "Power BI", "MySQL", "MongoDB", "Agile"]
+    technologies: ["JavaScript", "Dynamics CRM", "Power BI", "Python", "Machine Learning", "MySQL", "MongoDB", "Agile"]
   }
 ];
 

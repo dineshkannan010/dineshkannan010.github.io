@@ -36,7 +36,7 @@ const projects: Project[] = [
     id: "thermal-modeling",
     title: "Sample Efficient Rapid Thermal Modeling of 3D IC",
     description: "A conditional diffusion model for predicting high-resolution thermal maps from power maps.",
-    image: "/images/UNetPic1.jpg",
+    image: "/images/UNetPic.jpg",
     technologies: ["Python", "Flask", "React", "MongoDB", "OpenAI API", "RAG Pipeline", "Langchain"],
     github: "https://github.com/username/thermal-modeling",
     details: "Developed a conditional diffusion model achieving 56% performance improvement over traditional GAN models. Optimized for intricate thermal distributions and diverse 3D IC stack layouts."
