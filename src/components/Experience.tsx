@@ -55,7 +55,7 @@ const experiences: ExperienceItem[] = [
       "Automated CI/CD workflows via GitHub Actions and Vercel.",
       "Reduced deployment time by 25% through streamlined build and testing processes."
     ],
-    technologies: [".NET", "Dynamics 365", "Python", "SQL", "Power Automate", "Azure Data Factory", "Agile"]
+    technologies: ["Next.js", "OpenAI API", "OAuth2", "Stripe", "GitHub Actions", "Vercel"]
   },
   {
     id: 4,

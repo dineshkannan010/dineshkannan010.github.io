@@ -15,15 +15,6 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "youtube-sentiment",
-    title: "Real-Time YouTube Sentiment Analysis",
-    description: "Full-stack Chrome extension processing 50,000+ YouTube comments in real-time using containerized microservices on AWS.",
-    image: "/images/Ellipse.jpg",
-    technologies: ["Python", "AWS", "React", "Docker", "FastAPI", "Lambda", "ECS"],
-    github: "https://github.com/dineshkannan010",
-    details: "Built full-stack app processing 50,000+ YouTube comments in real-time using containerized microservices on AWS ECS. Designed RESTful API with FastAPI and integrated AWS Lambda for serverless processing achieving 200ms average latency. Implemented Docker-based deployment pipeline with 99.5% uptime across 3 AWS availability zones. Optimized comment processing pipeline using hash maps and priority queues, reducing memory usage by 40% and enabling real-time analysis with O(n log n) complexity."
-  },
-  {
     id: "ellipsis",
     title: "Ellipsis — Podcast Generation Platform",
     description: "Automated podcast generation achieving 95% natural-sounding speech quality through AI integration.",
@@ -32,6 +23,16 @@ const projects: Project[] = [
     github: "https://github.com/dineshkannan010/Ellipsis.git",
     details: "Automated podcast generation achieving 95% natural-sounding speech quality as measured by user feedback surveys, by integrating Perplexity's deep research API with Orpheus TTS to produce multi-topic content in under 3 minutes per episode. Built microservice architecture with FastAPI handling 5 services: research, scripting, TTS, storage, and API gateway. Implemented Redis caching layer reducing API costs by 60% and improving response times to <500ms."
   },
+  {
+    id: "youtube-sentiment",
+    title: "Real-Time YouTube Sentiment Analysis",
+    description: "Full-stack Chrome extension processing 50,000+ YouTube comments in real-time using containerized microservices on AWS.",
+    image: "/images/Youtube1.png",
+    technologies: ["Python", "AWS", "React", "Docker", "FastAPI", "Lambda", "ECS"],
+    github: "https://github.com/dineshkannan010/Youtube_comments_analyzer.git",
+    details: "Built full-stack app processing 50,000+ YouTube comments in real-time using containerized microservices on AWS ECS. Designed RESTful API with FastAPI and integrated AWS Lambda for serverless processing achieving 200ms average latency. Implemented Docker-based deployment pipeline with 99.5% uptime across 3 AWS availability zones. Optimized comment processing pipeline using hash maps and priority queues, reducing memory usage by 40% and enabling real-time analysis with O(n log n) complexity."
+  },
+  
   {
     id: "burnout-extreme",
     title: "BurnoutExtreme",
