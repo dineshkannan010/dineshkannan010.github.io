@@ -181,7 +181,7 @@ const Hero: React.FC = () => {
           <span className="text-teal-400 font-semibold"> Full-Stack Development</span>,
           <span className="text-teal-400 font-semibold"> AI/ML</span>, and
           <span className="text-teal-400 font-semibold"> Cloud Architecture</span>.
-          Building scalable applications that serve 500+ users with 99.2% uptime.
+          Passionate about building innovative solutions and exploring cutting-edge technologies.
         </motion.p>
 
         {/* Buttons */}
