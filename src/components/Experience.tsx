@@ -15,44 +15,47 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     id: 1,
+    title: "Software Developer",
+    company: "North Carolina State University",
+    location: "Raleigh, NC, USA",
+    date: "August 2025 - Present",
+    description: [
+      "Built full-stack geospatial platform with React, Node.js, PostgreSQL serving 100+ students, implementing a custom Timeline Builder with before/after image comparison sliders that increased student research engagement by 35%",
+      "Implemented RBAC authentication system with JWT and role-based workflows, reducing instructor approval time by 40%",
+      "Reduced page load times by 75% (3.2s → 0.8s) as measured across 100+ student sessions, by migrating media infrastructure to Cloudinary CDN and offloading 60% of database storage operations",
+      "Designed automated draft-to-publish pipeline handling 100+ timeline submissions in a semester with 99% accuracy"
+    ],
+    technologies: ["React", "Node.js", "PostgreSQL", "JWT", "Cloudinary", "RBAC", "TypeScript"]
+  },
+  {
+    id: 2,
     title: "Research Assistant",
     company: "North Carolina State University",
     location: "Raleigh, NC, USA",
     date: "July 2024 - April 2025",
     description: [
-      "Developed an AI-powered Teaching Assistant chatbot utilizing OpenAI and RAG, automating responses and enhancing student engagement",
-      "Implemented a human-in-the-loop learning pipeline integrated with course materials",
-      "Built a responsive full-stack application with React, Flask, and MongoDB",
-      "Improved chatbot accuracy by 30% through optimized query caching and embedded academic content"
+      "Developed AI teaching assistant serving 500+ students with 99.2% uptime and 1.2s avg response time using React, Flask, MongoDB and AWS",
+      "Built RESTful API with FastAPI handling 10,000+ monthly queries, implementing JWT auth and performance optimization strategies including database indexing and query caching for sub-second response times",
+      "Engineered RAG-based chatbot using OpenAI, LangChain, improving accessibility by 35% through context-aware responses",
+      "Automated CI/CD pipeline with GitHub Actions, reducing deployment time by 40% and eliminating manual release errors",
+      "Integrated AWS Cloud Storage for scalable media management, handling 50GB+ of course materials with 99.9% availability",
+      "Designed database schema optimization strategy reducing query latency by 55% through indexing and query restructuring"
     ],
-    technologies: ["OpenAI", "RAG", "React", "Flask", "MongoDB", "JWT", "Python"]
-  },
-  {
-    id: 2,
-    title: "Software Engineering Fellow",
-    company: "Headstarter AI",
-    location: "Remote, USA",
-    date: "July 2024 - September 2024",
-    description: [
-      "Built core components of a SaaS app using Next.js and OpenAI API",
-      "Developed SaaS flashcard app with OAuth2-based login and Stripe integration",
-      "Automated CI/CD workflows via GitHub Actions and Vercel",
-      "Reduced deployment time by 25% through streamlined build and testing processes"
-    ],
-    technologies: ["Next.js", "OpenAI API", "OAuth2", "Stripe", "GitHub Actions", "Vercel"]
+    technologies: ["React", "Flask", "FastAPI", "MongoDB", "AWS", "OpenAI", "LangChain", "RAG", "GitHub Actions", "JWT"]
   },
   {
     id: 3,
-    title: "Deloitte Consulting Analyst",
+    title: "Consulting Analyst",
     company: "Deloitte",
     location: "Mumbai, India",
     date: "January 2023 - July 2023",
     description: [
-      "Engineered JavaScript web APIs for Dynamics CRM and automated Power BI workflows, boosting data retrieval by 40% and efficiency by 35%.",
-      "Architected hybrid MySQL/MongoDB schema and led Agile sprints, cutting query latency and delivery time 27%.",
-      "Conducted EDA and built Python/SQL ML models (93.5% accuracy), cutting rejections 25%; deployed Power BI dashboards, reducing rejections by 13% and increasing profit by 5%."
+      "Developed .NET plugins for Dynamics 365, reducing query response time by 40% (8s → 4.8s) for 10,000+ record datasets",
+      "Accelerated feature delivery by 20% by leading daily stand-ups and refining backlog grooming, successfully shipping 10 core features across 6 sprints with zero post-deployment defects",
+      "Identified critical vegetation growth patterns by analyzing 50GB+ of datasets using Python & SQL, directly influencing client resource allocation strategy and reducing projected maintenance costs by 15%",
+      "Built custom business automation workflows with Power Automate and Azure Data Factory, streamlining cross-system data processing for 5 client projects and reducing manual effort by 50 hours/month"
     ],
-    technologies: ["JavaScript", "Dynamics CRM", "Power BI", "Python", "Machine Learning", "MySQL", "MongoDB", "Agile"]
+    technologies: [".NET", "Dynamics 365", "Python", "SQL", "Power Automate", "Azure Data Factory", "Agile"]
   }
 ];
 
@@ -81,13 +84,13 @@ const Experience: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative"
+              className="relative group"
             >
-              <div className="absolute -left-12 mt-1.5 h-8 w-8 rounded-full bg-primary-500 dark:bg-primary-700 flex items-center justify-center">
+              <div className="absolute -left-12 mt-1.5 h-8 w-8 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-600 dark:to-primary-700 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <Briefcase className="h-4 w-4 text-white" />
               </div>
-              
-              <div className="card p-6 dark:bg-dark-800 hover:shadow-primary-100/20 dark:hover:shadow-primary-900/20">
+
+              <div className="card p-6 dark:bg-dark-800 hover:shadow-xl hover:shadow-primary-100/30 dark:hover:shadow-primary-900/30 transition-all duration-300 border-l-4 border-transparent hover:border-primary-500 dark:hover:border-primary-600">
                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                   <div>
                     <h3 className="text-xl md:text-2xl font-bold text-dark-900 dark:text-white">

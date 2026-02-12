@@ -28,13 +28,13 @@ const About: React.FC = () => {
           >
             <h3 className="text-2xl font-bold mb-4 text-dark-900 dark:text-white">My Background</h3>
             <p className="mb-4 text-dark-700 dark:text-dark-300">
-              Currently pursuing my Master's in Computer Science at North Carolina State University, where I'm focusing on AI/ML and Cloud Computing. I have experience in developing innovative solutions using modern technologies and frameworks.
+              Master's student in Computer Science at North Carolina State University with a strong foundation in AI/ML, Cloud Computing, and Full Stack Development. Currently working as a Software Developer building geospatial platforms that serve hundreds of students.
             </p>
             <p className="mb-4 text-dark-700 dark:text-dark-300">
-              As a Research Assistant at NC State, I've worked on developing AI-powered teaching assistants and implementing human-in-the-loop learning pipelines. I've also contributed to various projects during my time at Deloitte and as a Software Engineering Fellow at Headstarter AI.
+              I've developed AI-powered teaching assistants serving 500+ students with 99.2% uptime, built scalable full-stack applications with React and Node.js, and optimized systems to achieve 75% improvements in page load times. My experience at Deloitte involved developing .NET plugins and analyzing massive datasets to drive strategic decisions.
             </p>
             <p className="text-dark-700 dark:text-dark-300">
-              I'm passionate about exploring new technologies and building solutions that make a real impact. My expertise spans across full-stack development, cloud architecture, and machine learning applications.
+              I'm passionate about building scalable, high-performance applications that make a real impact. My expertise spans full-stack development, cloud architecture on AWS, database optimization, and implementing AI/ML solutions with LLMs and RAG pipelines.
             </p>
           </motion.div>
 

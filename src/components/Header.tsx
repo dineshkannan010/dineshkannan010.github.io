@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = ({
               </Link>
             ))}
             <a
-              href="assets/Resume/SDE_DineshKannan_Resume_P.pdf"
+              href="assets/Resume/DineshKannan_SDEResume_Latest.pdf"
               className="ml-4 btn btn-outline flex items-center"
               download
             >
@@ -127,7 +127,7 @@ const Header: React.FC<HeaderProps> = ({
               </Link>
             ))}
             <a
-              href="assets/Resume/SDE_DineshKannan_Resume_P.pdf"
+              href="assets/Resume/DineshKannan_SDEResume_Latest.pdf"
               className="block py-2 px-3 text-primary-600 font-medium flex items-center"
               download
               onClick={closeMobileMenu}

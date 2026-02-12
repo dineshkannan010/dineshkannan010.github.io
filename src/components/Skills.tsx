@@ -12,39 +12,27 @@ interface SkillCategory {
 const skillCategories: SkillCategory[] = [
   {
     id: 'languages',
-    title: 'Programming Languages',
+    title: 'Languages & Frameworks',
     icon: <Code2 className="h-6 w-6 text-primary-600 dark:text-primary-400" />,
-    skills: ['Python', 'JavaScript', 'TypeScript', 'Java', 'Ruby', 'SQL', 'HTML', 'CSS']
-  },
-  {
-    id: 'frontend',
-    title: 'Frontend Technologies',
-    icon: <Globe className="h-6 w-6 text-primary-600 dark:text-primary-400" />,
-    skills: ['React', 'Node.js', 'Next.js', 'Flask', 'Ruby on Rails', 'REST APIs', 'Tailwind CSS', 'Material UI']
-  },
-  {
-    id: 'backend',
-    title: 'AI & Machine Learning',
-    icon: <Server className="h-6 w-6 text-primary-600 dark:text-primary-400" />,
-    skills: ['PyTorch', 'TensorFlow', 'RAG Pipelines', 'OpenAI API', 'Scikit-learn', 'CNNs', 'GANs', 'Transformers']
-  },
-  {
-    id: 'databases',
-    title: 'Databases',
-    icon: <Database className="h-6 w-6 text-primary-600 dark:text-primary-400" />,
-    skills: ['MySQL', 'NoSQL', 'MongoDB', 'Firebase', 'Redis', 'PostgreSQL', 'Elasticsearch']
+    skills: ['Python', 'JavaScript', 'TypeScript', 'React', 'Node.js', 'Flask', 'FastAPI', 'HTML/CSS', '.NET']
   },
   {
     id: 'cloud',
     title: 'Cloud & DevOps',
     icon: <Cloud className="h-6 w-6 text-primary-600 dark:text-primary-400" />,
-    skills: ['AWS Cloud', 'Google Cloud', 'Docker', 'CI/CD', 'Heroku', 'Vercel', 'GitHub Actions']
+    skills: ['AWS Lambda', 'AWS S3', 'AWS EC2', 'Google Cloud Platform', 'Docker', 'CI/CD', 'GitHub Actions', 'Distributed Systems']
   },
   {
-    id: 'tools',
-    title: 'Tools & Platforms',
-    icon: <Command className="h-6 w-6 text-primary-600 dark:text-primary-400" />,
-    skills: ['Git', 'Jira', 'Postman', 'Power BI', 'Anaconda', 'Stripe', 'Linux']
+    id: 'databases',
+    title: 'Databases & Tools',
+    icon: <Database className="h-6 w-6 text-primary-600 dark:text-primary-400" />,
+    skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Git', 'Agile/Scrum', 'Jest/Pytest', 'Postman']
+  },
+  {
+    id: 'ai',
+    title: 'AI & Machine Learning',
+    icon: <Server className="h-6 w-6 text-primary-600 dark:text-primary-400" />,
+    skills: ['LLMs', 'Agentic AI', 'PyTorch', 'RAG', 'OpenAI', 'LangChain', 'Transformers', 'Pandas', 'Scikit-learn']
   }
 ];
 
@@ -65,7 +53,7 @@ const Skills: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.id}
@@ -73,10 +61,10 @@ const Skills: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="card p-6 dark:bg-dark-700 hover:shadow-primary-100/20 dark:hover:shadow-primary-900/20"
+              className="card p-6 dark:bg-dark-700 hover:shadow-xl hover:shadow-primary-100/30 dark:hover:shadow-primary-900/30 transition-all duration-300 group border border-transparent hover:border-primary-500/30 dark:hover:border-primary-600/30"
             >
               <div className="flex items-center mb-4">
-                <div className="p-3 bg-primary-100 dark:bg-primary-900/30 rounded-full mr-4">
+                <div className="p-3 bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900/30 dark:to-primary-800/30 rounded-full mr-4 group-hover:scale-110 transition-transform duration-300">
                   {category.icon}
                 </div>
                 <h3 className="text-xl font-bold text-dark-900 dark:text-white">

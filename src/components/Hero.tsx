@@ -172,15 +172,16 @@ const Hero: React.FC = () => {
 
         {/* Description */}
         <motion.p
-          className="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-gray-400"
+          className="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-gray-400 leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Master’s student in Computer Science at NC State University,
-          specializing in AI/ML, Cloud Computing, and Full Stack Development.
-          Passionate about building innovative solutions and exploring cutting-edge
-          technologies.
+          Software Developer and Master's student at NC State University, specializing in
+          <span className="text-teal-400 font-semibold"> Full-Stack Development</span>,
+          <span className="text-teal-400 font-semibold"> AI/ML</span>, and
+          <span className="text-teal-400 font-semibold"> Cloud Architecture</span>.
+          Building scalable applications that serve 500+ users with 99.2% uptime.
         </motion.p>
 
         {/* Buttons */}

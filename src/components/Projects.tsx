@@ -15,40 +15,31 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: "youtube-sentiment",
+    title: "Real-Time YouTube Sentiment Analysis",
+    description: "Full-stack Chrome extension processing 50,000+ YouTube comments in real-time using containerized microservices on AWS.",
+    image: "/images/Ellipse.jpg",
+    technologies: ["Python", "AWS", "React", "Docker", "FastAPI", "Lambda", "ECS"],
+    github: "https://github.com/dineshkannan010",
+    details: "Built full-stack app processing 50,000+ YouTube comments in real-time using containerized microservices on AWS ECS. Designed RESTful API with FastAPI and integrated AWS Lambda for serverless processing achieving 200ms average latency. Implemented Docker-based deployment pipeline with 99.5% uptime across 3 AWS availability zones. Optimized comment processing pipeline using hash maps and priority queues, reducing memory usage by 40% and enabling real-time analysis with O(n log n) complexity."
+  },
+  {
     id: "ellipsis",
     title: "Ellipsis — Podcast Generation Platform",
-    description: "A fully automated, AI-driven podcast generation agent capable of producing human-like, high-quality podcasts.",
+    description: "Automated podcast generation achieving 95% natural-sounding speech quality through AI integration.",
     image: "/images/Ellipse.jpg",
-    technologies: ["Python", "Flask", "React", "Redis", "Orpheus TTS", "Perplexity API"],
+    technologies: ["Python", "Flask", "React", "Redis", "Orpheus TTS", "Perplexity API", "FastAPI"],
     github: "https://github.com/dineshkannan010/Ellipsis.git",
-    details: "Developed a fully automated podcast generation platform using AI. Features include intelligent multi-speaker dialogue generation, automated content research, and high-quality text-to-speech synthesis."
+    details: "Automated podcast generation achieving 95% natural-sounding speech quality as measured by user feedback surveys, by integrating Perplexity's deep research API with Orpheus TTS to produce multi-topic content in under 3 minutes per episode. Built microservice architecture with FastAPI handling 5 services: research, scripting, TTS, storage, and API gateway. Implemented Redis caching layer reducing API costs by 60% and improving response times to <500ms."
   },
   {
     id: "burnout-extreme",
     title: "BurnoutExtreme",
-    description: "An integrated fitness platform with AI-powered workout plans and diet tracking.",
+    description: "Fitness platform with modular MongoDB-based diet tracking system serving 200+ daily active users.",
     image: "/images/BurnoutExtreme.jpg",
-    technologies: ["Flask", "React.js", "MongoDB", "Google Maps API", "Chart.js"],
+    technologies: ["Flask", "React.js", "MongoDB", "Google Maps API", "pytest", "TDD"],
     github: "https://github.com/SoftwareEngineeringNCSU101/BurnoutExtreme.git",
-    details: "Built an integrated fitness platform with modular components for diet tracking, real-time step monitoring, and AI-generated workout plans. Implemented an AI chatbot for personalized recommendations and integrated Google Maps API for local fitness events."
-  },
-  {
-    id: "thermal-modeling",
-    title: "Sample Efficient Rapid Thermal Modeling of 3D IC",
-    description: "A conditional diffusion model for predicting high-resolution thermal maps from power maps.",
-    image: "/images/UNetPic.jpg",
-    technologies: ["Python", "Flask", "React", "MongoDB", "OpenAI API", "RAG Pipeline", "Langchain"],
-    github: "https://github.com/username/thermal-modeling",
-    details: "Developed a conditional diffusion model achieving 56% performance improvement over traditional GAN models. Optimized for intricate thermal distributions and diverse 3D IC stack layouts."
-  },
-  {
-    id: "mlops-pipeline",
-    title: "FirstGuess TA Chatbot",
-    description: "An AI-powered Teaching Assistant chatbot, redefining teaching support and streamlining your academic journey with unparalleled efficiency and effectiveness..",
-    image: "/images/TAChatbot.jpg",
-    technologies: ["PyTorch", "AWS SageMaker", "Docker", "Apache Airflow", "GitHub Actions"],
-    github: "https://github.com/dineshkannan010/FirstGuess_TAChatbot.git",
-    details: "Implemented a human-in-the-loop learning pipeline integrated with course materials to build a responsive full-stack application with React, Flask, and MongoDB. Improved chatbot accuracy by 30% through optimized query caching and embedded academic content."
+    details: "Increased user retention by 27% as measured over 8-week study period, by building modular MongoDB-based diet tracking system with personalized goal-setting features for 200+ daily active users. Achieved 92% test coverage using pytest and TDD methodology, reducing production bugs by 78% for 200+ daily active users. Integrated Google Maps API for local fitness events and real-time step monitoring."
   }
 ];
 
@@ -91,14 +82,15 @@ const Projects: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="card overflow-hidden dark:bg-dark-800 h-full flex flex-col"
+              className="card overflow-hidden dark:bg-dark-800 h-full flex flex-col group hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-primary-500/30 dark:hover:border-primary-600/30"
             >
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+              <div className="relative h-48 overflow-hidden bg-gradient-to-br from-primary-50 to-primary-100 dark:from-dark-700 dark:to-dark-800">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-bold mb-2 text-dark-900 dark:text-white">
