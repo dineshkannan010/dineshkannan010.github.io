@@ -27,7 +27,7 @@ const projects: Project[] = [
     id: "youtube-sentiment",
     title: "Real-Time YouTube Sentiment Analysis",
     description: "Full-stack Chrome extension processing 50,000+ YouTube comments in real-time using containerized microservices on AWS.",
-    image: "/images/Youtube1.png",
+    image: "/images/Youtube1.jpg",
     technologies: ["Python", "AWS", "React", "Docker", "FastAPI", "Lambda", "ECS"],
     github: "https://github.com/dineshkannan010/Youtube_comments_analyzer.git",
     details: "Built full-stack app processing 50,000+ YouTube comments in real-time using containerized microservices on AWS ECS. Designed RESTful API with FastAPI and integrated AWS Lambda for serverless processing achieving 200ms average latency. Implemented Docker-based deployment pipeline with 99.5% uptime across 3 AWS availability zones. Optimized comment processing pipeline using hash maps and priority queues, reducing memory usage by 40% and enabling real-time analysis with O(n log n) complexity."
@@ -46,7 +46,7 @@ const projects: Project[] = [
     id: "thermal-modeling",
     title: "Sample Efficient Rapid Thermal Modeling of 3D IC",
     description: "A conditional diffusion model for predicting high-resolution thermal maps from power maps.",
-    image: "/images/UNetPicMain.png",
+    image: "/images/UNetPicMain.jpg",
     technologies: ["Python", "Flask", "React", "MongoDB", "OpenAI API", "RAG Pipeline", "Langchain"],
     github: "https://github.com/username/thermal-modeling",
     details: "Developed a conditional diffusion model achieving 56% performance improvement over traditional GAN models. Optimized for intricate thermal distributions and diverse 3D IC stack layouts."
