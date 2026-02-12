@@ -1,268 +1,255 @@
-import React, { useState, useEffect, useRef } from "react";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { 
+  ArrowDown, Github, Linkedin, Mail, 
+  Code, Cpu, Globe, Database, Server, 
+  Cloud, Layers, Terminal, GitBranch, Command, 
+  Wifi, Shield 
+} from "lucide-react";
 import { Link } from "react-scroll";
-import { motion } from "framer-motion";
-
-// Import Vanta effects + Three.js
-import NET from "vanta/dist/vanta.net.min";
-import CLOUDS from "vanta/dist/vanta.clouds.min";
-import * as THREE from "three";
-
-// ① Import your profile picture
+import { motion, AnimatePresence } from "framer-motion";
 import ProfilePic from "/images/Profile_pic.jpg";
 
-
 const Hero: React.FC = () => {
-  // ──────────────────────────────────────────────────────────────────────
-  // Refs & state for Vanta instances
-  // ──────────────────────────────────────────────────────────────────────
-  const netRef = useRef<HTMLDivElement | null>(null);
-  const cloudsRef = useRef<HTMLDivElement | null>(null);
-  const [netEffect, setNetEffect] = useState<any>(null);
-  const [cloudsEffect, setCloudsEffect] = useState<any>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [index, setIndex] = useState(0);
+
+  // Rotating Text Data
+  const words = [
+    { text: "Full-Stack", color: "text-teal-400" },
+    { text: "AI/ML", color: "text-indigo-400" },
+    { text: "Cloud Native", color: "text-purple-400" },
+    { text: "Scalable", color: "text-cyan-400" },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 2500); 
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   // ──────────────────────────────────────────────────────────────────────
-  // Initialize Vanta.NET (AI/ML “neural‐net” style)
+  // UPDATED: More Icons + Higher Opacity + Varied Colors
   // ──────────────────────────────────────────────────────────────────────
-  useEffect(() => {
-    if (!netEffect && netRef.current) {
-      setNetEffect(
-        NET({
-          el: netRef.current,
-          THREE,
-          color: 0x60a5fa,          // a lighter sky-blue for nodes
-          backgroundColor: 0x0f172a, // nearly black (indigo-900)
-          // lower opacity so you still see a hint of “clouds”?
-          points: 15.0,
-          maxDistance: 20.0,
-          spacing: 18.0,
-          showDots: true,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-        })
-      );
-    }
-    return () => {
-      if (netEffect) {
-        netEffect.destroy();
-        setNetEffect(null);
-      }
-    };
-  }, [netEffect]);
+  const floatingShapes = [
+    // Top Left Area
+    { Icon: Code, top: "15%", left: "10%", size: 40, color: "text-teal-500/40", duration: 15, delay: 0 },
+    { Icon: Terminal, top: "25%", left: "20%", size: 30, color: "text-slate-500/40", duration: 18, delay: 1 },
+    
+    // Top Right Area
+    { Icon: Cloud, top: "12%", left: "80%", size: 45, color: "text-purple-500/40", duration: 20, delay: 0.5 },
+    { Icon: Wifi, top: "28%", left: "88%", size: 35, color: "text-indigo-500/40", duration: 22, delay: 2 },
 
-  // ──────────────────────────────────────────────────────────────────────
-  // Initialize Vanta.CLOUDS (Cloud‐Computing vibe)
-  // ──────────────────────────────────────────────────────────────────────
-  useEffect(() => {
-    if (!cloudsEffect && cloudsRef.current) {
-      setCloudsEffect(
-        CLOUDS({
-          el: cloudsRef.current,
-          THREE,
-          skyColor: 0x000000,        // keep the same black base
-          cloudColor: 0x1f2937,      // dark‐indigo/gray clouds
-          cloudShadowColor: 0x000000,
-          sunColor: 0xffffff,        // (unused since it’s dark)
-          sunPosition: { x: 1.0, y: 1.0, z: 0.25 },
-          speed: 1.0,                // moderate cloud drift
-          backgroundColor: 0x000000, // ensure truly black underneath
-        })
-      );
-    }
-    return () => {
-      if (cloudsEffect) {
-        cloudsEffect.destroy();
-        setCloudsEffect(null);
-      }
-    };
-  }, [cloudsEffect]);
+    // Middle Left (Avoiding Center Text)
+    { Icon: Database, top: "45%", left: "8%", size: 38, color: "text-emerald-500/40", duration: 16, delay: 1.5 },
+    { Icon: GitBranch, top: "60%", left: "15%", size: 32, color: "text-orange-500/40", duration: 24, delay: 3 },
+
+    // Middle Right (Avoiding Center Text)
+    { Icon: Cpu, top: "50%", left: "85%", size: 50, color: "text-indigo-400/40", duration: 19, delay: 1 },
+    { Icon: Layers, top: "65%", left: "78%", size: 40, color: "text-pink-500/40", duration: 21, delay: 2.5 },
+
+    // Bottom Area
+    { Icon: Server, top: "80%", left: "25%", size: 36, color: "text-blue-500/40", duration: 23, delay: 0 },
+    { Icon: Shield, top: "85%", left: "65%", size: 34, color: "text-teal-600/40", duration: 25, delay: 1.5 },
+    
+    // Tiny decorative fillers
+    { Icon: Command, top: "35%", left: "92%", size: 20, color: "text-slate-600/30", duration: 12, delay: 4 },
+    { Icon: Globe, top: "10%", left: "50%", size: 24, color: "text-cyan-500/30", duration: 28, delay: 5 },
+  ];
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 bg-black"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#030712] pt-16"
     >
-      {/* ────────────────────────────────────────────────────────────────── */}
-      {/* 1. Vanta.NET canvas (AI/ML visualization) */}
-      {/* ────────────────────────────────────────────────────────────────── */}
-      <div
-        ref={netRef}
-        className="absolute inset-0 z-0"
-        style={{ backgroundColor: "#000000" }}
-      ></div>
-
-      {/* ────────────────────────────────────────────────────────────────── */}
-      {/* 2. Vanta.CLOUDS canvas (Cloud‐Computing visualization, semi-opaque) */}
-      {/* ────────────────────────────────────────────────────────────────── */}
-      <div
-        ref={cloudsRef}
-        className="absolute inset-0 z-10 opacity-50"
-        style={{ backgroundColor: "transparent" }}
-      ></div>
-
-
-      {/* ────────────────────────────────────────────────────────────────── */}
-      {/* 3. Blurred color “code‐cloud” blobs (to hint Full-Stack + depth) */}
-      {/* ────────────────────────────────────────────────────────────────── */}
-      <div className="absolute inset-0 z-20">
-        <div
-          className="
-            absolute top-20 right-0 w-96 h-96
-            bg-teal-500/20 dark:bg-cyan-800/20
-            rounded-full mix-blend-overlay filter blur-3xl
-            opacity-50 animate-float
-          "
-        ></div>
-        <div
-          className="
-            absolute bottom-20 left-20 w-96 h-96
-            bg-indigo-500/20 dark:bg-indigo-900/20
-            rounded-full mix-blend-overlay filter blur-3xl
-            opacity-50 animate-float-delayed
-          "
+      {/* LAYER 1: Dynamic Background Grid */}
+      <div className="absolute inset-0 z-0 opacity-20">
+        <div 
+          className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:40px_40px]"
         ></div>
       </div>
 
-      {/* ────────────────────────────────────────────────────────────────── */}
-      {/* 4. Main content (Full-Stack text, buttons, social icons) */}
-      {/* ────────────────────────────────────────────────────────────────── */}
-      <div className="container mx-auto px-6 relative z-30 text-center">
-        {/* 4a. Profile picture */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-6"
-        >
-          <img
-            src={ProfilePic}
-            alt="Dinesh Kannan"
-            className="
-              w-32 h-32               /* 128×128 px */
-              md:w-40 md:h-40          /* 160×160 px on medium screens */
-              rounded-full             /* make it a circle */
-              border-4 border-teal-400 /* teal ring */
-              object-cover             /* cropped to center */
-              shadow-lg                /* subtle drop-shadow */
-              mx-auto                  /* center horizontally */
-            "
-          />
-        </motion.div>
-        {/* Name */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white">
-            <span className="text-teal-400">Dinesh</span> Kannan
-          </h1>
-        </motion.div>
+      {/* LAYER 2: Mouse Spotlight */}
+      <div
+        className="absolute z-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(45, 212, 191, 0.15), transparent 40%)`,
+          inset: 0,
+        }}
+      />
 
-        {/* Title */}
-        <motion.h2
-          className="text-2xl md:text-3xl font-medium mb-6 text-gray-300"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          Software Engineer
-        </motion.h2>
-
-        {/* Description */}
-        <motion.p
-          className="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-gray-400 leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          Software Developer and Master's student at NC State University, specializing in
-          <span className="text-teal-400 font-semibold"> Full-Stack Development</span>,
-          <span className="text-teal-400 font-semibold"> AI/ML</span>, and
-          <span className="text-teal-400 font-semibold"> Cloud Architecture</span>.
-          Building scalable applications that serve 500+ users with 99.2% uptime.
-        </motion.p>
-
-        {/* Buttons */}
+      {/* LAYER 3: Floating 3D Icons (Now with variable colors/opacity) */}
+      {floatingShapes.map((shape, index) => (
         <motion.div
-          className="flex flex-wrap justify-center gap-4 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          key={index}
+          className={`absolute z-0 ${shape.color}`} // Using the color from the array
+          style={{ top: shape.top, left: shape.left }}
+          animate={{
+            y: [0, -30, 0],   
+            rotate: [0, 10, -10, 0], // Gentle rotation wobble 
+            scale: [1, 1.1, 1], 
+          }}
+          transition={{
+            duration: shape.duration,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: shape.delay,
+          }}
         >
-          <Link
-            to="contact"
-            spy={true}
-            smooth={true}
-            offset={-70}
-            duration={500}
-            className="btn btn-primary"
-          >
-            Get in Touch
-          </Link>
-          <Link
-            to="projects"
-            spy={true}
-            smooth={true}
-            offset={-70}
-            duration={500}
-            className="btn btn-outline"
-          >
-            See My Work
-          </Link>
+           <shape.Icon size={shape.size} strokeWidth={1.5} />
         </motion.div>
+      ))}
 
-        {/* Social Icons (Full-Stack “contact” links) */}
-        <motion.div
-          className="flex space-x-6 justify-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <a
-            href="https://github.com/dineshkannan010"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-teal-400 transition-colors"
-            aria-label="GitHub"
-          >
-            <Github size={24} />
-          </a>
-          <a
-            href="https://linkedin.com/in/dinesh012"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-teal-400 transition-colors"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={24} />
-          </a>
-          <a
-            href="mailto:dineshkannan010@gmail.com"
-            className="text-gray-400 hover:text-teal-400 transition-colors"
-            aria-label="Email"
-          >
-            <Mail size={24} />
-          </a>
-        </motion.div>
+      {/* LAYER 4: Main Content */}
+      <div className="container mx-auto px-6 relative z-10 text-center">
+        <div className="inline-block relative">
+            
+            {/* Profile Pic */}
+            <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8 relative inline-block"
+            >
+                <motion.div 
+                    className="absolute -inset-4 rounded-full border-t-2 border-l-2 border-teal-500/50"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                />
+                <motion.div 
+                    className="absolute -inset-4 rounded-full border-b-2 border-r-2 border-indigo-500/50"
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                />
+                <img
+                    src={ProfilePic}
+                    alt="Dinesh Kannan"
+                    className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-slate-900 object-cover shadow-2xl z-10"
+                />
+            </motion.div>
+
+            {/* Name */}
+            <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            >
+            <h1 className="text-5xl md:text-7xl font-bold mb-4 text-white tracking-tighter">
+                Dinesh <span className="text-teal-400">Kannan</span>
+            </h1>
+            </motion.div>
+
+            {/* Gradient Title Tag */}
+            <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mb-8"
+            >
+                <span className="px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700 text-teal-300 text-sm md:text-base font-mono">
+                    &lt; Software Engineer /&gt;
+                </span>
+            </motion.div>
+
+            {/* Description with Left-Aligned Animation */}
+            <motion.p
+            className="text-lg md:text-2xl max-w-3xl mx-auto mb-10 text-slate-400 leading-relaxed flex flex-col md:flex-row items-center justify-center gap-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            >
+            <span>Architecting intelligent systems with</span>
+            
+            {/* Fixed width container, left aligned */}
+            <span className="relative inline-flex justify-start w-[160px] h-[1.5em] overflow-hidden text-left">
+                <AnimatePresence mode="wait">
+                    <motion.span
+                        key={index}
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -20, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        className={`absolute font-bold ${words[index].color}`}
+                    >
+                        {words[index].text}
+                    </motion.span>
+                </AnimatePresence>
+            </span>
+            </motion.p>
+
+            {/* Buttons */}
+            <motion.div
+            className="flex flex-wrap justify-center gap-6 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            >
+            <Link
+                to="contact"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                className="group relative px-8 py-3 bg-teal-500 text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(20,184,166,0.5)] cursor-pointer"
+            >
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                <span className="relative">Get in Touch</span>
+            </Link>
+            
+            <Link
+                to="projects"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                className="px-8 py-3 bg-transparent border border-slate-600 text-white font-medium rounded-full hover:border-teal-400 hover:text-teal-400 transition-all cursor-pointer"
+            >
+                View Projects
+            </Link>
+            </motion.div>
+
+            {/* Social Icons */}
+            <motion.div
+            className="flex space-x-8 justify-center items-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            >
+            {[
+                { Icon: Github, href: "https://github.com/dineshkannan010" },
+                { Icon: Linkedin, href: "https://linkedin.com/in/dinesh012" },
+                { Icon: Mail, href: "mailto:dineshkannan010@gmail.com" },
+            ].map(({ Icon, href }, index) => (
+                <a
+                key={index}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-white hover:scale-125 transition-transform duration-300"
+                >
+                <Icon size={24} />
+                </a>
+            ))}
+            </motion.div>
+        </div>
       </div>
 
-      {/* ────────────────────────────────────────────────────────────────── */}
-      {/* 5. Scroll-down arrow */}
-      {/* ────────────────────────────────────────────────────────────────── */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-gray-400 animate-bounce z-30">
-        <Link
-          to="about"
-          spy={true}
-          smooth={true}
-          offset={-70}
-          duration={500}
-          className="cursor-pointer"
-        >
-          <ArrowDown size={24} />
-        </Link>
-      </div>
+      {/* Scroll Down */}
+      <motion.div 
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-slate-500"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <ArrowDown size={24} />
+      </motion.div>
     </section>
   );
 };

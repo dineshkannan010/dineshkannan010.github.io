@@ -15,15 +15,6 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "youtube-sentiment",
-    title: "Real-Time YouTube Sentiment Analysis",
-    description: "Full-stack Chrome extension processing 50,000+ YouTube comments in real-time using containerized microservices on AWS.",
-    image: "/images/Ellipse.jpg",
-    technologies: ["Python", "AWS", "React", "Docker", "FastAPI", "Lambda", "ECS"],
-    github: "https://github.com/dineshkannan010",
-    details: "Built full-stack app processing 50,000+ YouTube comments in real-time using containerized microservices on AWS ECS. Designed RESTful API with FastAPI and integrated AWS Lambda for serverless processing achieving 200ms average latency. Implemented Docker-based deployment pipeline with 99.5% uptime across 3 AWS availability zones. Optimized comment processing pipeline using hash maps and priority queues, reducing memory usage by 40% and enabling real-time analysis with O(n log n) complexity."
-  },
-  {
     id: "ellipsis",
     title: "Ellipsis — Podcast Generation Platform",
     description: "Automated podcast generation achieving 95% natural-sounding speech quality through AI integration.",
@@ -33,6 +24,16 @@ const projects: Project[] = [
     details: "Automated podcast generation achieving 95% natural-sounding speech quality as measured by user feedback surveys, by integrating Perplexity's deep research API with Orpheus TTS to produce multi-topic content in under 3 minutes per episode. Built microservice architecture with FastAPI handling 5 services: research, scripting, TTS, storage, and API gateway. Implemented Redis caching layer reducing API costs by 60% and improving response times to <500ms."
   },
   {
+    id: "youtube-sentiment",
+    title: "Real-Time YouTube Sentiment Analysis",
+    description: "Full-stack Chrome extension processing 50,000+ YouTube comments in real-time using containerized microservices on AWS.",
+    image: "/images/Youtube1.jpg",
+    technologies: ["Python", "AWS", "React", "Docker", "FastAPI", "Lambda", "ECS"],
+    github: "https://github.com/dineshkannan010/Youtube_comments_analyzer.git",
+    details: "Built full-stack app processing 50,000+ YouTube comments in real-time using containerized microservices on AWS ECS. Designed RESTful API with FastAPI and integrated AWS Lambda for serverless processing achieving 200ms average latency. Implemented Docker-based deployment pipeline with 99.5% uptime across 3 AWS availability zones. Optimized comment processing pipeline using hash maps and priority queues, reducing memory usage by 40% and enabling real-time analysis with O(n log n) complexity."
+  },
+  
+  {
     id: "burnout-extreme",
     title: "BurnoutExtreme",
     description: "Fitness platform with modular MongoDB-based diet tracking system serving 200+ daily active users.",
@@ -40,7 +41,27 @@ const projects: Project[] = [
     technologies: ["Flask", "React.js", "MongoDB", "Google Maps API", "pytest", "TDD"],
     github: "https://github.com/SoftwareEngineeringNCSU101/BurnoutExtreme.git",
     details: "Increased user retention by 27% as measured over 8-week study period, by building modular MongoDB-based diet tracking system with personalized goal-setting features for 200+ daily active users. Achieved 92% test coverage using pytest and TDD methodology, reducing production bugs by 78% for 200+ daily active users. Integrated Google Maps API for local fitness events and real-time step monitoring."
+  },
+  {
+    id: "thermal-modeling",
+    title: "Sample Efficient Rapid Thermal Modeling of 3D IC",
+    description: "A conditional diffusion model for predicting high-resolution thermal maps from power maps.",
+    image: "/images/UNetPicMain.jpg",
+    technologies: ["Python", "Flask", "React", "MongoDB", "OpenAI API", "RAG Pipeline", "Langchain"],
+    github: "https://github.com/username/thermal-modeling",
+    details: "Developed a conditional diffusion model achieving 56% performance improvement over traditional GAN models. Optimized for intricate thermal distributions and diverse 3D IC stack layouts."
+  },
+  {
+    id: "TA_Chatbot",
+    title: "FirstGuess TA Chatbot",
+    description: "An AI-powered Teaching Assistant chatbot, redefining teaching support and streamlining your academic journey with unparalleled efficiency and effectiveness..",
+    image: "/images/TAChatbot.jpg",
+    technologies: ["PyTorch", "AWS SageMaker", "Docker", "Apache Airflow", "GitHub Actions"],
+    github: "https://github.com/dineshkannan010/FirstGuess_TAChatbot.git",
+    details: "Implemented a human-in-the-loop learning pipeline integrated with course materials to build a responsive full-stack application with React, Flask, and MongoDB. Improved chatbot accuracy by 30% through optimized query caching and embedded academic content."
   }
+
+
 ];
 
 const Projects: React.FC = () => {

@@ -45,6 +45,20 @@ const experiences: ExperienceItem[] = [
   },
   {
     id: 3,
+    title: "Software Engineering Fellow",
+    company: "Headstarter AI",
+    location: "Remote, USA",
+    date: "July 2024 - August 2024",
+    description: [
+      "Built core components of a SaaS app using Next.js and OpenAI API.",
+      "Developed SaaS flashcard app with OAuth2-based login and Stripe integration.",
+      "Automated CI/CD workflows via GitHub Actions and Vercel.",
+      "Reduced deployment time by 25% through streamlined build and testing processes."
+    ],
+    technologies: ["Next.js", "OpenAI API", "OAuth2", "Stripe", "GitHub Actions", "Vercel"]
+  },
+  {
+    id: 4,
     title: "Consulting Analyst",
     company: "Deloitte",
     location: "Mumbai, India",

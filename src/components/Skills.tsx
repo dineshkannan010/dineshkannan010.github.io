@@ -20,7 +20,7 @@ const skillCategories: SkillCategory[] = [
     id: 'cloud',
     title: 'Cloud & DevOps',
     icon: <Cloud className="h-6 w-6 text-primary-600 dark:text-primary-400" />,
-    skills: ['AWS Lambda', 'AWS S3', 'AWS EC2', 'Google Cloud Platform', 'Docker', 'CI/CD', 'GitHub Actions', 'Distributed Systems']
+    skills: ['AWS Lambda', 'AWS S3', 'AWS EC2', 'Google Cloud Platform', 'Docker', 'CI/CD', 'GitHub Actions', 'Distributed Systems', 'Kubernetes']
   },
   {
     id: 'databases',
@@ -32,7 +32,7 @@ const skillCategories: SkillCategory[] = [
     id: 'ai',
     title: 'AI & Machine Learning',
     icon: <Server className="h-6 w-6 text-primary-600 dark:text-primary-400" />,
-    skills: ['LLMs', 'Agentic AI', 'PyTorch', 'RAG', 'OpenAI', 'LangChain', 'Transformers', 'Pandas', 'Scikit-learn']
+    skills: ['LLMs', 'Agentic AI', 'PyTorch', 'RAG', 'CNNs', 'LangChain', 'Transformers', 'Pandas', 'Scikit-learn']
   }
 ];
 
