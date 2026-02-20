@@ -13,7 +13,6 @@ const Hero: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [index, setIndex] = useState(0);
 
-  // Rotating Text Data
   const words = [
     { text: "Full-Stack", color: "text-teal-400" },
     { text: "AI/ML", color: "text-indigo-400" },
@@ -36,39 +35,26 @@ const Hero: React.FC = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // ──────────────────────────────────────────────────────────────────────
-  // UPDATED: More Icons + Higher Opacity + Varied Colors
-  // ──────────────────────────────────────────────────────────────────────
   const floatingShapes = [
-    // Top Left Area
-    { Icon: Code, top: "15%", left: "10%", size: 40, color: "text-teal-500/40", duration: 15, delay: 0 },
-    { Icon: Terminal, top: "25%", left: "20%", size: 30, color: "text-slate-500/40", duration: 18, delay: 1 },
-    
-    // Top Right Area
-    { Icon: Cloud, top: "12%", left: "80%", size: 45, color: "text-purple-500/40", duration: 20, delay: 0.5 },
-    { Icon: Wifi, top: "28%", left: "88%", size: 35, color: "text-indigo-500/40", duration: 22, delay: 2 },
-
-    // Middle Left (Avoiding Center Text)
-    { Icon: Database, top: "45%", left: "8%", size: 38, color: "text-emerald-500/40", duration: 16, delay: 1.5 },
-    { Icon: GitBranch, top: "60%", left: "15%", size: 32, color: "text-orange-500/40", duration: 24, delay: 3 },
-
-    // Middle Right (Avoiding Center Text)
-    { Icon: Cpu, top: "50%", left: "85%", size: 50, color: "text-indigo-400/40", duration: 19, delay: 1 },
-    { Icon: Layers, top: "65%", left: "78%", size: 40, color: "text-pink-500/40", duration: 21, delay: 2.5 },
-
-    // Bottom Area
-    { Icon: Server, top: "80%", left: "25%", size: 36, color: "text-blue-500/40", duration: 23, delay: 0 },
-    { Icon: Shield, top: "85%", left: "65%", size: 34, color: "text-teal-600/40", duration: 25, delay: 1.5 },
-    
-    // Tiny decorative fillers
-    { Icon: Command, top: "35%", left: "92%", size: 20, color: "text-slate-600/30", duration: 12, delay: 4 },
-    { Icon: Globe, top: "10%", left: "50%", size: 24, color: "text-cyan-500/30", duration: 28, delay: 5 },
+    { Icon: Code, top: "15%", left: "10%", size: 40, color: "text-teal-500/40", duration: 15, delay: 0, hideOnMobile: false },
+    { Icon: Terminal, top: "25%", left: "20%", size: 30, color: "text-slate-500/40", duration: 18, delay: 1, hideOnMobile: true },
+    { Icon: Cloud, top: "12%", left: "80%", size: 45, color: "text-purple-500/40", duration: 20, delay: 0.5, hideOnMobile: false },
+    { Icon: Wifi, top: "28%", left: "88%", size: 35, color: "text-indigo-500/40", duration: 22, delay: 2, hideOnMobile: true },
+    { Icon: Database, top: "45%", left: "8%", size: 38, color: "text-emerald-500/40", duration: 16, delay: 1.5, hideOnMobile: true },
+    { Icon: GitBranch, top: "60%", left: "15%", size: 32, color: "text-orange-500/40", duration: 24, delay: 3, hideOnMobile: false },
+    { Icon: Cpu, top: "50%", left: "85%", size: 50, color: "text-indigo-400/40", duration: 19, delay: 1, hideOnMobile: true },
+    { Icon: Layers, top: "65%", left: "78%", size: 40, color: "text-pink-500/40", duration: 21, delay: 2.5, hideOnMobile: false },
+    { Icon: Server, top: "80%", left: "25%", size: 36, color: "text-blue-500/40", duration: 23, delay: 0, hideOnMobile: false },
+    { Icon: Shield, top: "85%", left: "65%", size: 34, color: "text-teal-600/40", duration: 25, delay: 1.5, hideOnMobile: true },
+    { Icon: Command, top: "35%", left: "92%", size: 20, color: "text-slate-600/30", duration: 12, delay: 4, hideOnMobile: true },
+    { Icon: Globe, top: "10%", left: "50%", size: 24, color: "text-cyan-500/30", duration: 28, delay: 5, hideOnMobile: true },
   ];
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#030712] pt-16"
+      // FIX 1: Changed to flex-col and removed items-center/justify-center
+      className="relative min-h-screen flex flex-col overflow-hidden bg-[#030712]"
     >
       {/* LAYER 1: Dynamic Background Grid */}
       <div className="absolute inset-0 z-0 opacity-20">
@@ -79,22 +65,22 @@ const Hero: React.FC = () => {
 
       {/* LAYER 2: Mouse Spotlight */}
       <div
-        className="absolute z-0 pointer-events-none"
+        className="absolute z-0 pointer-events-none hidden md:block"
         style={{
           background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(45, 212, 191, 0.15), transparent 40%)`,
           inset: 0,
         }}
       />
 
-      {/* LAYER 3: Floating 3D Icons (Now with variable colors/opacity) */}
+      {/* LAYER 3: Floating 3D Icons */}
       {floatingShapes.map((shape, index) => (
         <motion.div
           key={index}
-          className={`absolute z-0 ${shape.color}`} // Using the color from the array
+          className={`absolute z-0 ${shape.color} ${shape.hideOnMobile ? 'hidden md:block' : 'block'}`}
           style={{ top: shape.top, left: shape.left }}
           animate={{
             y: [0, -30, 0],   
-            rotate: [0, 10, -10, 0], // Gentle rotation wobble 
+            rotate: [0, 10, -10, 0],
             scale: [1, 1.1, 1], 
           }}
           transition={{
@@ -109,30 +95,31 @@ const Hero: React.FC = () => {
       ))}
 
       {/* LAYER 4: Main Content */}
-      <div className="container mx-auto px-6 relative z-10 text-center">
-        <div className="inline-block relative">
+      {/* FIX 2: Added my-auto (safe centering) and pt-32 (header clearance) */}
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center my-auto pt-32 pb-16">
+        <div className="inline-block relative w-full max-w-4xl mx-auto">
             
             {/* Profile Pic */}
             <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="mb-8 relative inline-block"
+            className="mb-6 md:mb-8 relative inline-block"
             >
                 <motion.div 
-                    className="absolute -inset-4 rounded-full border-t-2 border-l-2 border-teal-500/50"
+                    className="absolute -inset-3 md:-inset-4 rounded-full border-t-2 border-l-2 border-teal-500/50"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                 />
                 <motion.div 
-                    className="absolute -inset-4 rounded-full border-b-2 border-r-2 border-indigo-500/50"
+                    className="absolute -inset-3 md:-inset-4 rounded-full border-b-2 border-r-2 border-indigo-500/50"
                     animate={{ rotate: -360 }}
                     transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                 />
                 <img
                     src={ProfilePic}
                     alt="Dinesh Kannan"
-                    className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-slate-900 object-cover shadow-2xl z-10"
+                    className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full border-4 border-slate-900 object-cover shadow-2xl z-10"
                 />
             </motion.div>
 
@@ -142,7 +129,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             >
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 text-white tracking-tighter">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-3 md:mb-4 text-white tracking-tighter">
                 Dinesh <span className="text-teal-400">Kannan</span>
             </h1>
             </motion.div>
@@ -152,42 +139,40 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mb-8"
+            className="mb-6 md:mb-8"
             >
-                <span className="px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700 text-teal-300 text-sm md:text-base font-mono">
+                <span className="px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700 text-teal-300 text-xs sm:text-sm md:text-base font-mono">
                     &lt; Software Engineer /&gt;
                 </span>
             </motion.div>
 
-            {/* Description with Left-Aligned Animation */}
-            <motion.p
-            className="text-lg md:text-2xl max-w-3xl mx-auto mb-10 text-slate-400 leading-relaxed flex flex-col md:flex-row items-center justify-center gap-2"
+            {/* Description */}
+            <motion.div
+            className="text-base sm:text-lg md:text-2xl max-w-3xl mx-auto mb-8 md:mb-10 text-slate-400 leading-relaxed flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             >
-            <span>Architecting intelligent systems with</span>
-            
-            {/* Fixed width container, left aligned */}
-            <span className="relative inline-flex justify-start w-[160px] h-[1.5em] overflow-hidden text-left">
-                <AnimatePresence mode="wait">
-                    <motion.span
-                        key={index}
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -20, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        className={`absolute font-bold ${words[index].color}`}
-                    >
-                        {words[index].text}
-                    </motion.span>
-                </AnimatePresence>
-            </span>
-            </motion.p>
+              <span>Architecting intelligent systems with</span>
+              <span className="relative flex justify-center sm:justify-start w-[140px] sm:w-[180px] h-[1.5em] overflow-hidden text-center sm:text-left mt-1 sm:mt-0">
+                  <AnimatePresence mode="wait">
+                      <motion.span
+                          key={index}
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          exit={{ y: -20, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeOut" }}
+                          className={`absolute font-bold w-full ${words[index].color}`}
+                      >
+                          {words[index].text}
+                      </motion.span>
+                  </AnimatePresence>
+              </span>
+            </motion.div>
 
             {/* Buttons */}
             <motion.div
-            className="flex flex-wrap justify-center gap-6 mb-12"
+            className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-10 md:mb-12 px-4 sm:px-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
@@ -198,7 +183,7 @@ const Hero: React.FC = () => {
                 smooth={true}
                 offset={-70}
                 duration={500}
-                className="group relative px-8 py-3 bg-teal-500 text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(20,184,166,0.5)] cursor-pointer"
+                className="group w-full sm:w-auto text-center relative px-8 py-3 bg-teal-500 text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(20,184,166,0.5)] cursor-pointer"
             >
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                 <span className="relative">Get in Touch</span>
@@ -210,7 +195,7 @@ const Hero: React.FC = () => {
                 smooth={true}
                 offset={-70}
                 duration={500}
-                className="px-8 py-3 bg-transparent border border-slate-600 text-white font-medium rounded-full hover:border-teal-400 hover:text-teal-400 transition-all cursor-pointer"
+                className="w-full sm:w-auto text-center px-8 py-3 bg-transparent border border-slate-600 text-white font-medium rounded-full hover:border-teal-400 hover:text-teal-400 transition-all cursor-pointer"
             >
                 View Projects
             </Link>
@@ -218,7 +203,7 @@ const Hero: React.FC = () => {
 
             {/* Social Icons */}
             <motion.div
-            className="flex space-x-8 justify-center items-center"
+            className="flex space-x-6 md:space-x-8 justify-center items-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
@@ -235,7 +220,7 @@ const Hero: React.FC = () => {
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-white hover:scale-125 transition-transform duration-300"
                 >
-                <Icon size={24} />
+                <Icon size={24} className="w-5 h-5 md:w-6 md:h-6" />
                 </a>
             ))}
             </motion.div>
@@ -244,11 +229,11 @@ const Hero: React.FC = () => {
 
       {/* Scroll Down */}
       <motion.div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-slate-500"
+        className="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 text-slate-500"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <ArrowDown size={24} />
+        <ArrowDown size={20} className="md:w-6 md:h-6" />
       </motion.div>
     </section>
   );

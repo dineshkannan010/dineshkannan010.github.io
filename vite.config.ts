@@ -6,7 +6,8 @@ export default defineConfig({
   plugins: [react()],
   base: '/',
   build: {
-    outDir: 'docs',               // <--- Tells Vite to build into the "docs" folder
+    outDir: 'docs', 
+    emptyOutDir: true,              // <--- Tells Vite to build into the "docs" folder
   },
   optimizeDeps: {
     exclude: ['lucide-react'],
